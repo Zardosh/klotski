@@ -129,8 +129,8 @@ button {
   height: 56px;
   border-radius: 8px;
   padding: 8px;
-
   font-size: 24px;
+  user-select: none;
 }
 
 .gameSquare:not(.empty) {
