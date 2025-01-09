@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,400&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: 400 14px Roboto, sans-serif;
+  background: #222;
+  -webkit-font-smoothing: antialiased;
+}
+
+input,
+button,
+textarea {
+  font: 400 18px Roboto, sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+#main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 120px;
+  padding-bottom: 80px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 16px;
+  border-radius: 16px;
+  background: #e2b980;
+  color: #222;
+
+  border: 6px outset #f1ddc1;
+  box-shadow: 11px 11px 22px #474747, -11px -11px 22px #5d5d5d;
+}
+
+.gameControls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  padding-bottom: 8px;
+}
+
+.gameInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  padding-bottom: 8px;
+}
+
+.gameInfo > div {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+#soundToggle {
+  cursor: pointer;
+}
+
+#gameToggle {
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.toggleStart {
+  background-color: #04aa6d;
+}
+
+.toggleReset {
+  background-color: #f44336;
+}
+
+#gameBoard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  border-radius: 4px;
+  padding: 16px;
+  background: #e2b980;
+
+  box-shadow: inset 6px 6px 12px #c09d6d, inset -6px -6px 12px #ffd593;
+}
+
+.gameRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.gameSquare {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  padding: 8px;
+
+  font-size: 24px;
+}
+
+.gameSquare:not(.empty) {
+  cursor: pointer;
+  background: #e2b980;
+  box-shadow: 2px 2px 9px #c29f6e, -3px -3px 9px #ffd392;
+}

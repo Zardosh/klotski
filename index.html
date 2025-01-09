@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Klotski</title>
+  </head>
+  <body>
+    <div id="main">
+      <div class="container">
+        <div class="gameControls">
+          <div class="gameInfo">
+            <div>
+              <select name="" id="gameSize">
+                <option value="4" selected>4x4</option>
+                <option value="5">5x5</option>
+                <option value="6">6x6</option>
+                <option value="7">7x7</option>
+                <option value="8">8x8</option>
+              </select>
+            </div>
+
+            <div class="gameTimerContainer">
+              <span id="gameTimer">00:00.000</span>
+            </div>
+
+            <div>
+              <img
+                id="soundToggle"
+                src="./assets/icons/volume-on.svg"
+                width="25"
+                height="25"
+                fill="#fff"
+              />
+            </div>
+          </div>
+
+          <button id="gameToggle" class="toggleStart">Start</button>
+        </div>
+
+        <div id="gameBoard"></div>
+      </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
