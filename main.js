@@ -2,8 +2,7 @@ import { getIsSoundActive, setIsSoundActive } from './settings.js';
 
 import SoundEffectPlayer from './soundEffects.js';
 
-const scrambleMovementAmount = 75;
-const scrambleCooldown = 100;
+const scrambleMovementAmount = 1000;
 const gameTimerCooldown = 10;
 
 function main() {
@@ -15,8 +14,6 @@ function main() {
   ];
   let emptySquare = [3, 3];
   let isSoundActive = getIsSoundActive() === false ? false : true;
-
-  let scrambleCount = 0;
 
   let isGameRunning = false;
   let gameTimerInterval;
@@ -52,6 +49,7 @@ function main() {
 
   function generateBoard(size) {
     board = [];
+    emptySquare = [size - 1, size - 1];
 
     const boardElement = document.getElementById('gameBoard');
     boardElement.innerHTML = '';
@@ -70,7 +68,9 @@ function main() {
         squareElement.id = getSquareId(i, j);
         squareElement.innerText = size * i + j + 1;
 
-        squareElement.addEventListener('click', event => onSquareClick(i, j));
+        squareElement.addEventListener('mousedown', event =>
+          onSquareClick(i, j)
+        );
 
         rowElement.appendChild(squareElement);
       }
@@ -107,13 +107,13 @@ function main() {
       soundEffectPlayer.playRandomSoundEffect();
     }
 
-    if (hasPlayerWon()) {
+    if (isGameRunning && hasPlayerWon()) {
       winGame();
     }
   }
 
   function scrambleBoard() {
-    const scrambleInterval = setInterval(() => {
+    for (let i = 0; i < scrambleMovementAmount; i++) {
       const possibleMovements = [
         [1, 0],
         [-1, 0],
@@ -127,14 +127,7 @@ function main() {
         possibleMovements[Math.floor(Math.random() * possibleMovements.length)];
 
       moveSquare(emptySquare[0] + delta[0], emptySquare[1] + delta[1]);
-
-      scrambleCount++;
-
-      if (scrambleCount == scrambleMovementAmount) {
-        scrambleCount = 0;
-        clearInterval(scrambleInterval);
-      }
-    }, scrambleCooldown);
+    }
   }
 
   function updateTimer(newTime) {
@@ -159,15 +152,13 @@ function main() {
 
       scrambleBoard();
 
-      setTimeout(() => {
-        updateTimer(0);
-        isGameRunning = true;
+      updateTimer(0);
+      isGameRunning = true;
 
-        gameTimerInterval = setInterval(
-          () => updateTimer(time + gameTimerCooldown),
-          gameTimerCooldown
-        );
-      }, scrambleMovementAmount * scrambleCooldown);
+      gameTimerInterval = setInterval(
+        () => updateTimer(time + gameTimerCooldown),
+        gameTimerCooldown
+      );
     }
   }
 
